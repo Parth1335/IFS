@@ -61,7 +61,7 @@ export const deleteFeedback = async (id) => {
 export const acknowledgeFeedback = async (feedbackId) => {
   const token = localStorage.getItem("accessToken");
 
-  const response = await fetch("http://localhost:8000/api/acknowledge/", {
+  const response = await fetch("http://localhost:8000/api/ack/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
