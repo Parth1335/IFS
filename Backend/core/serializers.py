@@ -28,3 +28,9 @@ class AcknowledgmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Acknowledgment
         fields = ['id', 'feedback', 'employee', 'timestamp']
+        
+def validate_employee(self, value):
+    request = self.context['request']
+    if request.user.role == 'manager' and value.manager != request.user:
+        raise serializers.ValidationError("You can only select your team members.")
+    return value        

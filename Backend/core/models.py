@@ -7,10 +7,14 @@ class User(AbstractUser):
         ('manager', 'Manager'),
         ('employee', 'Employee'),
     ]
-        role = models.CharField(
-        max_length=10,
-        choices=ROLE_CHOICES,
-        default='employee',
+        role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='employee')
+        manager = models.ForeignKey(
+        'self',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        limit_choices_to={'role': 'manager'},
+        related_name='team_members'
     )
         
         
