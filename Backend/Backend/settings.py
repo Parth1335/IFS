@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 from datetime import timedelta
+from corsheaders.defaults import default_headers
 from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -149,4 +150,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "https://zippy-syrniki-7e533d.netlify.app/",
     "https://ifs232.netlify.app",
+]
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'content-type',
+    'authorization',
 ]
