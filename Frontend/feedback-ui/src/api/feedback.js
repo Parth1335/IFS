@@ -1,7 +1,8 @@
+const API_BASE = import.meta.env.VITE_API_BASE;
 export const createFeedback = async (feedbackData) => {
     const token = localStorage.getItem("accessToken");
 
-    const response = await fetch("http://localhost:8000/api/feedbacks/create/", {
+    const response = await fetch(`${API_BASE}/api/`feedbacks/create/, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -20,7 +21,7 @@ export const createFeedback = async (feedbackData) => {
 export const fetchFeedbacks = async () => {
     const token = localStorage.getItem("accessToken");
 
-    const res = await fetch("http://localhost:8000/api/feedbacks/", {
+    const res = await fetch(`${API_BASE}/api/feedbacks/`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -33,7 +34,7 @@ export const fetchFeedbacks = async () => {
 
 export const updateFeedback = async (id, updatedData) => {
   const token = localStorage.getItem("accessToken");
-  const response = await fetch(`http://localhost:8000/api/feedbacks/${id}/`, {
+  const response = await fetch(`${API_BASE}/api/feedbacks/${id}/`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -48,7 +49,7 @@ export const updateFeedback = async (id, updatedData) => {
 
 export const deleteFeedback = async (id) => {
   const token = localStorage.getItem("accessToken");
-  const response = await fetch(`http://localhost:8000/api/feedbacks/${id}/`, {
+  const response = await fetch(`${API_BASE}/api/feedbacks/${id}/`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -61,7 +62,7 @@ export const deleteFeedback = async (id) => {
 export const acknowledgeFeedback = async (feedbackId) => {
   const token = localStorage.getItem("accessToken");
 
-  const response = await fetch("http://localhost:8000/api/ack/", {
+  const response = await fetch(`${API_BASE}/api/ack/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
