@@ -1,7 +1,8 @@
+const API_BASE = import.meta.env.VITE_API_BASE;
 export const acknowledgeFeedback = async (feedbackId) => {
   const token = localStorage.getItem("accessToken");
 
-  const res = await fetch("http://localhost:8000/api/ack/", {
+  const res = await fetch(`${API_BASE}/api/ack/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
