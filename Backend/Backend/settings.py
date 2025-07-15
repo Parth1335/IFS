@@ -148,5 +148,5 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "https://zippy-syrniki-7e533d.netlify.app/",
-    "https://ifs232.netlify.app/",
+    "https://ifs232.netlify.app",
 ]
