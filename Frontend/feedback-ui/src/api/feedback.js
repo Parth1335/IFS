@@ -2,7 +2,7 @@ const API_BASE = import.meta.env.VITE_API_BASE;
 export const createFeedback = async (feedbackData) => {
     const token = localStorage.getItem("accessToken");
 
-    const response = await fetch(`${API_BASE}/api/`feedbacks/create/, {
+    const response = await fetch(`${API_BASE}/api/feedbacks/create/`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
