@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework.generics import CreateAPIView, RetrieveUpdateAPIView
+from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
 from .models import Feedback, Acknowledgment
 from .serializers import FeedbackSerializer, AcknowledgmentSerializer, UserSerializer
@@ -19,7 +19,11 @@ class CreateUserView(CreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(manager=self.request.user)
-
+        
+class UpdateUserView(RetrieveUpdateDestroyAPIView):   
+      queryset = User.objects.all()
+      serializer_class = UserSerializer
+      permission_classes = [IsAuthenticated, IsOwnerManager]
 
 class FeedbackCreateView(CreateAPIView):
     queryset = Feedback.objects.all()
@@ -74,7 +78,7 @@ class AckView(APIView):
         return Response({"detail": "Feedback acknowledged successfully."}, status=201)
     
     
-class FeedbackUpdateView(RetrieveUpdateAPIView):   
+class FeedbackUpdateView(RetrieveUpdateDestroyAPIView):   
       queryset = Feedback.objects.all()
       serializer_class = FeedbackSerializer
       permission_classes = [IsAuthenticated, IsOwnerManager]
