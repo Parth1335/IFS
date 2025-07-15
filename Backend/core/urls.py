@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import FeedbackCreateView, FeedbackView, AckView, FeedbackUpdateView, ProfileView, CreateUserView, TeamMembersView
+from .views import FeedbackCreateView, FeedbackView, AckView, FeedbackUpdateView, ProfileView, CreateUserView, TeamMembersView, UpdateUserView  
 
 urlpatterns = [
     path("feedback/", FeedbackView.as_view(), name="feedback-list"),   # GET
@@ -12,4 +12,5 @@ urlpatterns = [
     path('feedbacks/<int:pk>/', FeedbackUpdateView.as_view(), name='update-feedback'),
     path('users/create/', CreateUserView.as_view(), name='create-user'),
     path("team/", TeamMembersView.as_view(), name="team-members"),
+    path('users/<int:pk>/', UpdateUserView.as_view(), name='user-update-delete'),
 ]
