@@ -155,3 +155,5 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
     'content-type',
     'authorization',
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
