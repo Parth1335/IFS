@@ -1,7 +1,7 @@
 export const createUser = async (userData) => {
     const token = localStorage.getItem("accessToken");
 
-    const response = await fetch("http://localhost:8000/api/users/create/", {
+    const response = await fetch(`${API_BASE}/api/users/create/`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -27,4 +27,30 @@ export const createUser = async (userData) => {
     }
 
     return await response.json();
+};
+
+
+export const updateUser = async (id, data) => {
+  const token = localStorage.getItem("accessToken");
+  const response = await fetch(`${API_BASE}/api/users/${id}/`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+  if (!response.ok) throw new Error("Failed to update user");
+  return await response.json();
+};
+
+export const deleteUser = async (id) => {
+  const token = localStorage.getItem("accessToken");
+  const response = await fetch(`${API_BASE}/api/users/${id}/`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (!response.ok) throw new Error("Failed to delete user");
 };
