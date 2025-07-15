@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-mkw!ciapi&@7v^l27ok33bg9aro0dyl!(-s0juvhub14zwi#=!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [https://ifs-qi90.onrender.com]
+ALLOWED_HOSTS = ['ifs-r7o2.onrender.com', 'localhost']
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
